@@ -12,7 +12,7 @@
 
 - `text`: the same to `user->location`.
 
-### 02_
+### 02_data_cleaning.py
 
 - `df = df.drop_duplicates(["id"])`: delete duplicate tweets based on `"id"`.
 
