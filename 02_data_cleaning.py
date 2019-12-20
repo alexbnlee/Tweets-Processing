@@ -38,3 +38,12 @@ print(re.sub(r"\s+", " ", name_alpha))
 for ind in df.index:
     df.loc[ind]['user_location'] = df.loc[ind]['user_location'].lower()
     df.loc[ind]['text'] = df.loc[ind]['text'].lower()
+
+# delete links
+def remove_urls (vTEXT):
+    vTEXT = re.sub(r'(https|http)?:\/\/(\w|\.|\/|\?|\=|\&|\%)*\b', '', vTEXT, flags=re.MULTILINE)
+    return(vTEXT)
+
+for i in range(20):
+    print(df.iloc[i]['text'])
+    print(remove_urls(df.iloc[i]['text']))
