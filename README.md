@@ -58,6 +58,10 @@
 
 - NTLK
 
+- get continuous words starting with a capital letter (2 methods)
+
+- delete stopwords
+
 ### 06_tweets_stats.py
 
 - weekly tweets
@@ -67,3 +71,17 @@
 - user number
 
 - processing with progress bar
+
+### 07_bounding_box_percentage.py
+
+- Calculate numbers of tweets based on different area.
+
+### 08_modelling.py
+
+- Function of distance between two points.
+
+- Data processing. 
+
+- Mean error distance.
+
+- Median error distance.
