@@ -47,3 +47,19 @@ def remove_urls (vTEXT):
 for i in range(20):
     print(df.iloc[i]['text'])
     print(remove_urls(df.iloc[i]['text']))
+
+# get related tweets
+import re
+keywords = ['flu', 'influenza', 'fever', 'cough', 'sore throat', 'runny nose', 'stuffy nose', 'cold', 'headache']
+def word_extraction(sentence):
+	words = re.sub("[^\w]", " ",  sentence).split()
+	cleaned_text = [w.lower() for w in words]
+	return cleaned_text
+
+count = 0
+for i in range(len(df)):
+    for kw in keywords:
+        if kw in word_extraction(tmp.iloc[i]['text'].lower()):
+            count += 1
+            break
+print(count)
