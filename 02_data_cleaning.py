@@ -57,9 +57,11 @@ def word_extraction(sentence):
 	return cleaned_text
 
 count = 0
-for i in range(len(df)):
+is_flu = ['No']*dft.shape[0]
+for i in range(len(dft)):
     for kw in keywords:
-        if kw in word_extraction(tmp.iloc[i]['text'].lower()):
+        if kw in word_extraction(dft.iloc[i]['text'].lower()):
             count += 1
+            is_flu[i] = "Yes"
             break
 print(count)
