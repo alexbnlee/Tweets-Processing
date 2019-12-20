@@ -49,3 +49,21 @@
 ### 04_tfidf.py
 
 - Get keywords from articles.
+
+### 05_NER.py
+
+- Standford NER
+
+- spaCy
+
+- NTLK
+
+### 06_tweets_stats.py
+
+- weekly tweets
+
+- flu related tweets
+
+- user number
+
+- processing with progress bar
