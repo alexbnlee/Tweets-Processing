@@ -35,3 +35,17 @@
 - `re.sub(r"\s+", " ", name)`: eliminate duplicate whitespaces.
 
 - Convert all the characters into lower case.
+
+- Delete links like `https://github.com/alexbnlee/Tweets-Processing/edit/master/README.md`.
+
+- Extract flu related tweets.
+
+### 03_read_Gazetteer.py
+
+- Get all results with name of Kingsford.
+
+- Get the suburb with name of Kingford.
+
+### 04_tfidf.py
+
+- Get keywords from articles.
