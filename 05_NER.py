@@ -45,4 +45,84 @@ def fn_preprocess(art):
 art_processed = fn_preprocess(article)
 print(art_processed)
 
+# get continuous words starting with a capital letter    
+import re
+pattern = r',|\.|/|;|\'|`|\[|\]|<|>|\?|:|"|\{|\}|\~|!|@|#|\$|%|\^|&|\(|\)|-|=|\_|\+|·|！|…|（'
+a = "I am Alex Lee. I am from Denman Prospect and I love this place very much. We don't like apple. The big one is good."
+# our goal is getting 'I', 'Alex Lee', 'Denman Prospect', 'I'
+
+def get_capital(sentence):
+    sections = [s.strip() for s in re.split(pattern, sentence)]
+    
+    caps = []
+    
+    for sec in sections:
+        tmp = []
+        for w in sec.split():
+            if w[0].isupper():
+                tmp.append(w)
+            elif len(tmp) > 0:
+                caps.append(tmp)
+                tmp = []
+        if len(tmp) > 0:
+            caps.append(tmp)
+            tmp = []
+    
+    caps = [' '.join(c) for c in caps]
+    
+    return list(set(caps))
         
+print(get_capital(a))
+
+# Similar with the above method, but also delete stopwords
+# method 1
+import re
+import nltk
+from nltk.corpus import stopwords
+pattern = r',|\.|/|;|\'|`|\[|\]|<|>|\?|:|"|\{|\}|\~|!|@|#|\$|%|\^|&|\(|\)|-|=|\_|\+|·|！|…|（'
+a = "I am Alex Lee. I am from Denman Prospect and I love this place very much. We don't like apple. The big one is good."
+# our goal is getting 'I', 'Alex Lee', 'Denman Prospect', 'I'
+
+def get_capital(sentence):
+    sections = [s.strip() for s in re.split(pattern, sentence)]
+    
+    caps = []
+    
+    for sec in sections:
+        tmp = []
+        for w in sec.split():
+            if w[0].isupper():
+                tmp.append(w)
+            elif len(tmp) > 0:
+                caps.append(tmp)
+                tmp = []
+        if len(tmp) > 0:
+            caps.append(tmp)
+            tmp = []
+    
+    caps = list(set([' '.join(c) for c in caps]))
+    
+    caps = [c for c in caps if c.lower() not in stopwords.words('english')]
+    
+    return list(set(caps))
+        
+print(get_capital(a))
+
+# method 2 (better, based on NLTK)
+import nltk
+from nltk.corpus import stopwords
+a = "I am Alex Lee. I am from Denman Prospect and I love this place very much. We don't like apple. The big one is good."
+tokens = nltk.word_tokenize(a)
+caps = []
+for i in range(1, 4):
+    for eles in nltk.ngrams(tokens, i):
+        length = len(list(eles))
+        for j in range(length):
+            if eles[j][0].islower() or not eles[j][0].isalpha():
+                break
+            elif j == length - 1:
+                caps.append(' '.join(list(eles)))
+
+caps = list(set(caps))
+caps = [c for c in caps if c.lower() not in stopwords.words('english')]
+print(caps)
